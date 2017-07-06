@@ -1,6 +1,7 @@
-/*
+/**
  * 2017年7月4日9:19:46
- * Drivermanager
+ * Drivermanager->Connection
+ * Java连接mysql
  * 1. 配置mysql的驱动器
  * 2. 连接mysql
  */

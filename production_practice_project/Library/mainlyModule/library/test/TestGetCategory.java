@@ -19,48 +19,56 @@ public class TestGetCategory {
 		cs = new CategoryServer();
 	}
 	
-	//@Test
-	// 测试FindbyID
-	public void testFindbyID() {
-		Assert.assertNotNull(cs.FindbyID(1));
-		Assert.assertEquals("人文", cs.FindbyID(1).getName());
-	}
+//	@Test
+//	// 测试FindbyID
+//	public void testFindbyID() {
+//		int id = 3;
+//		Assert.assertNotNull(cs.FindbyID(id));
+//		Assert.assertEquals("历史", cs.FindbyID(id).getName());
+//	}
+	
+//	@Test
+//	// 测试FindbyID
+//	public void testFindbyName() {
+//		Category name = new Category();
+//		String newname = "政治";
+//		name.setName(newname);
+//		Assert.assertNotNull(cs.FindbyName(name));
+//	}
 	
 	@Test
 	// 测试insert
 	public void testinsert() {
 		Category cat = new Category();
-		cat.setName("人文");
+		cat.setName("军事");
 		Assert.assertTrue(cs.insert(cat));
 	}
 	
-////	@Test
+//	@Test
 //	//测试delete
 //	public void testdelete() {
 //		int id =3;
 //		boolean re = false;
-//		Press press = new Press();
-//		press.setId(id);
-//		re = cs.delete(press);
+//		Category cat = new Category();
+//		cat.setId(id);
+//		re = cs.delete(cat);
 //		Assert.assertTrue(re);
 //	}
 	
-//	//@Test
-//	//测试update
+//	@Test
+//	// 测试update
 //	public void testupdate() {
-//		int id =3;
+//		int id = 2;
 //		boolean re = false;
-//		Press press = new Press();
-//		PressServer getpress = new PressServer();
-//		press = getpress.FindbyID(id);
-//		if(press == null){
+//		Category cat = new Category();
+//		cat = cs.FindbyID(id);
+//		if (cat == null) {
 //			System.out.println("该ID不存在！");
-//		}
-//		else{
-//			press.setName("北京出版社");
-//			re = getpress.update(press);
+//		} else {
+//			cat.setName("政治");
+//			re = cs.update(cat);
 //		}
 //		Assert.assertTrue(re);
 //	}
-	
+
 }

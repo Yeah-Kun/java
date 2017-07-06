@@ -1,33 +1,32 @@
 # 生产实习项目
 
-## 步骤
-### 1. 理解MVC（Model View Controller）
-#### a. Model：处理逻辑的部分，通常负责在数据库中存取数据
-#### b. View：处理数据显示的部分，通常根据模型数据创建
-#### c. Controller：处理用户交互的部分，从View中读取数据，控制用户输入，向模型发送数据
-### 2. 代码具体内容
-#### a. 建立基本信息模型：model
-##### i. Book	Category	Press
-		
-#### b. 建立业务逻辑，持久层：dao
-##### i. ConnectionMySQL：java与mysql建立连接
-###### 1) 配置mysql驱动器
-###### 2) 连接mysql
-####### a) 使用驱动管理器的getConnection，输入正确的（端口号、用户名、密码）连接mysql
-##### ii. PressInterface：定义出版社信息接口
-###### 1) 通过ID查找press表里面的内容
-##### iii. GetPress：访问数据库提取需要的数据
-###### 1) 连接mysql
-###### 2) 通过sql语句访问数据库，获取数据
-###### 3) 解析，将得到的数据存储到result
-###### 4) 将result的二维表数据转存到press对象
-				
-#### c. 建立业务逻辑，服务层：server
-##### i. PressInterfaceServer：定义出版社信息接口
-###### 1) 通过ID查找press表里面的内容
-##### ii. PressServer：通过持久层获得press信息并返回
-		
-#### d. 建立数据显示模块：view
-##### i. 调用GUI容器：Jframe
-##### ii. 设置窗口基本信息
-##### iii. 填写需展现的信息
+## 概念
+###  MVC（Model View Controller）
+1. Model：处理逻辑的部分，通常负责在数据库中存取数据
+2. View：处理数据显示的部分，通常根据模型数据创建
+3. Controller：处理用户交互的部分，从View中读取数据，控制用户输入，向模型发送数据
+
+## 具体实现
+### 1. Model层
+#### 1.1 model（模型层）
+- Book：图书类，记录图书基本信息
+- Category：图书分类类，记录图书的不同类型
+- Press：出版社类，记录不同的出版社信息
+
+#### 1.2 dao（持久层）
+- ConnectMySQL：用于Java连接mysql
+- CategoryInterface：定义图书类的接口
+- PressInterface：定义出版社类的接口
+- GetCategory：实现图书类表的增删查改
+- GetPress：实现出版社类表的增删查改
+
+#### 1.3 server（服务层）
+- CategoryServerInterface：定义图书类的服务层接口
+- PressServerInterface：服务层，定义press（出版社信息）接口
+- CategoryServer：访问持久层，获得某个图书分类的信息
+- PressServer：访问持久层，获得具体某个出版社的信息
+
+### 2.View层
+### 2.1 view（表现层）
+- FrmPressDetail：展现具体某个出版社的具体数据
+- ShowPressDetail：对上面的类进一步优化，可通过id查找具体某个出版社的具体数据

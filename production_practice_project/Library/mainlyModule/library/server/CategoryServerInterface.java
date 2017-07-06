@@ -8,6 +8,7 @@ import library.model.Category;
 
 public interface CategoryServerInterface {
 	public Category FindbyID(int id); 
+	public Category FindbyName(Category entity);
 	public boolean insert(Category entity);
 	public boolean delete(Category entity);
 	public boolean update(Category entity);

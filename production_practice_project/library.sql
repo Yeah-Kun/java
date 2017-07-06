@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : connector
-Source Server Version : 50717
+Source Server         : localhost_3306
+Source Server Version : 50718
 Source Host           : localhost:3306
 Source Database       : library
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2017-07-06 16:27:13
+Date: 2017-07-06 22:57:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -41,13 +41,15 @@ CREATE TABLE `category` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
 INSERT INTO `category` VALUES ('1', '人文');
-INSERT INTO `category` VALUES ('2', '人文');
+INSERT INTO `category` VALUES ('2', '政治');
+INSERT INTO `category` VALUES ('4', '历史');
+INSERT INTO `category` VALUES ('6', '军事');
 
 -- ----------------------------
 -- Table structure for press

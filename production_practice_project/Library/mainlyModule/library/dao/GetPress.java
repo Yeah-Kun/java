@@ -1,10 +1,12 @@
-/*
+/**
  * 2017年7月4日11:04:33
- * 从数据库提取出版社的基本数据
+ * 实现出版社类表的增删查改
+ * 具体实现过程：
  * 1. 使用Connection对象连接mysql
  * 2. Connection对象通过sql语句访问数据库，获取数据，返回PreparedStatement对象
  * 3. 使用executeQuery方法解析PreparedStatement对象，将得到的二维表数据存储到result
  * 4. 将result的二维表数据转存到press对象（调用press的set方法）
+ * 5. 对press对象进行操作
  */
 package library.dao;
 

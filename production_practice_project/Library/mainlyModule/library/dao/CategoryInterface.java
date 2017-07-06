@@ -9,7 +9,8 @@ import library.model.Category;
 
 public interface CategoryInterface {
 	public Category FindbyID(int id); // 通过ID查找Category表里面的内容
+	public Category FindbyName(Category entity); // 通过name查找Category表里面的内容
 	public int insert(Category entity);// 添加一个实体
 	public int delete(Category entity); //删除
-	public abstract int update(Category entity); //修改
+	public int update(Category entity); //修改
 }

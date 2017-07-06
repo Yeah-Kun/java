@@ -44,6 +44,32 @@ public class GetCategory implements CategoryInterface{
 		return cat;
 	}
 
+	
+	// 通过name查找类名
+	public Category FindbyName(Category entity) {
+		Category cat= null;
+		String sql = "select * from Category where name=?";
+		
+		try {
+			// 访问数据库，通过name查找数据库信息
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, entity.getName());// 预处理
+			result = ps.executeQuery(); // 执行，将结果返回
+			
+			if(result.next()){
+				cat = new Category(); 
+				
+				// 将result的二维表内容放到Category对象里面
+				cat.setId(result.getInt("id"));
+				cat.setName(result.getString("name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return cat;
+	}
+
+
 	// 插入类名
 	public int insert(Category entity) {
 		int re=0;
