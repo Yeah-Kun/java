@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-07-03 16:29:31
+Date: 2017-07-06 16:27:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `book`;
 CREATE TABLE `book` (
-  `id` int(20) NOT NULL,
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `ISBN` varchar(50) DEFAULT NULL,
   `price` double(20,0) DEFAULT NULL,
@@ -38,14 +38,16 @@ CREATE TABLE `book` (
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
-  `id` int(20) NOT NULL,
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
+INSERT INTO `category` VALUES ('1', '人文');
+INSERT INTO `category` VALUES ('2', '人文');
 
 -- ----------------------------
 -- Table structure for press
@@ -58,8 +60,12 @@ CREATE TABLE `press` (
   `url` varchar(50) DEFAULT NULL COMMENT '出版社网址',
   `mail` varchar(50) DEFAULT NULL COMMENT '出版社邮箱',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of press
 -- ----------------------------
+INSERT INTO `press` VALUES ('1', '人民教育出版社', '北京', 'http://www.pep.com.cn/', '123456@qq.com');
+INSERT INTO `press` VALUES ('2', 'AKB48', '南京', 'www.jiangmen.com', '654615@qq.com');
+INSERT INTO `press` VALUES ('3', '志坚哥', '江门', 'www.zhijian.com', '5461@qq.com');
+INSERT INTO `press` VALUES ('4', 'SBH48', '广州', 'www.wyu.com', '68465@qq.com');

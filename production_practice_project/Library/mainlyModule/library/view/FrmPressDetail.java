@@ -13,7 +13,6 @@ import javax.swing.JTextArea;
 
 public class FrmPressDetail extends JFrame{
 	
-
 	/**
 	 * 
 	 */

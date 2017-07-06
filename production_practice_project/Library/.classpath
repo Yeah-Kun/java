@@ -14,8 +14,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="E:/AllData/learn/project/hamcrest-core-1.3.jar"/>
-	<classpathentry kind="lib" path="E:/AllData/learn/project/junit-4.11.jar"/>
-	<classpathentry kind="lib" path="E:/AllData/learn/project/mysql-connector-java-5.1.35.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/mysql-connector-java-5.1.35.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

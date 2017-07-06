@@ -45,11 +45,29 @@ public class TestGetPress {
 	@Test
 	//测试delete
 	public void testdelete() {
-		int id =2;
+		int id =3;
 		boolean re = false;
 		Press press = new Press();
 		press.setId(id);
 		re = psi.delete(press);
+		Assert.assertTrue(re);
+	}
+	
+	//@Test
+	//测试update
+	public void testupdate() {
+		int id =3;
+		boolean re = false;
+		Press press = new Press();
+		PressServer getpress = new PressServer();
+		press = getpress.FindbyID(id);
+		if(press == null){
+			System.out.println("该ID不存在！");
+		}
+		else{
+			press.setName("北京出版社");
+			re = getpress.update(press);
+		}
 		Assert.assertTrue(re);
 	}
 }

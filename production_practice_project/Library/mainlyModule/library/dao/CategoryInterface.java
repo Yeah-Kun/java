@@ -1,0 +1,15 @@
+/**
+ * 2017年7月6日14:48:45
+ * 定义图书类的接口
+ */
+package library.dao;
+
+import library.model.Category;
+
+
+public interface CategoryInterface {
+	public Category FindbyID(int id); // 通过ID查找Category表里面的内容
+	public int insert(Category entity);// 添加一个实体
+	public int delete(Category entity); //删除
+	public abstract int update(Category entity); //修改
+}

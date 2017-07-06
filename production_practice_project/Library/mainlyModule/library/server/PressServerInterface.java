@@ -6,7 +6,7 @@ package library.server;
 
 import library.model.Press;
 
-public interface PressInterfaceServer {
+public interface PressServerInterface {
 	public Press FindbyID(int id); 
 	public boolean insert(Press entity);
 	public boolean delete(Press entity);

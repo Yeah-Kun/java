@@ -21,7 +21,7 @@ public class GetPress implements PressInterface {
 	ResultSet result = null; // 用来保存数据库的二维表信息
 	PreparedStatement ps = null; // PreparedStatement对象，用于存储Connection对象返回的内容
 
-	@Override
+	// 通过ID查找出版社信息
 	public Press FindbyID(int id) {
 		Press press = null;
 		String sql = "select * from press where id=?"; // 使用sql语句查询数据库
@@ -31,8 +31,11 @@ public class GetPress implements PressInterface {
 			ps.setInt(1, id);
 			
 			result = ps.executeQuery(); // 得到数据库信息，并保存到result
+			
+			// 执行以下语句，说明id存在
+			// 将result的信息存储到press对象里面
 			if (result.next()) {
-				press = new Press();// 创建press对象，用于保存读取到的数据库数据
+				press = new Press();
 
 				// 将result的二维表内容放到press对象里面
 				press.setId(result.getInt("id")); // 从result中获取id
@@ -42,31 +45,34 @@ public class GetPress implements PressInterface {
 				press.setUrl(result.getString("url"));
 			}
 		} catch (SQLException e) {
-			System.out.println("数据库提取信息错误！");
+			//System.out.println("数据库提取信息错误！");
+			e.printStackTrace();
 		}
 
-		return press;
+		return press; // 如果获取失败则为null
 	}
 
-	@Override
-	public int insert(Press eneity) {
+	// 增加出版社信息
+	public int insert(Press entity) {
 		int re=0;
 		String sql = "INSERT INTO Press(name,adress,url,mail) VALUES(?,?,?,?)"; // 使用SQL语句查询数据库
 		try {
 			// 访问数据库，增加一条完整的信息
 			ps = conn.prepareStatement(sql); // 跟mysql建立连接
-			ps.setString(1, eneity.getName());
-			ps.setString(2, eneity.getAdress());
-			ps.setString(3, eneity.getUrl());
-			ps.setString(4, eneity.getMail());
-			re = ps.executeUpdate(); // 将结果返回
+			ps.setString(1, entity.getName());
+			ps.setString(2, entity.getAdress());
+			ps.setString(3, entity.getUrl());
+			ps.setString(4, entity.getMail());
+			re = ps.executeUpdate(); // 执行，将结果返回
 
 		} catch (SQLException e) {
-			System.out.println("数据库插入信息错误！");
+			// System.out.println("数据库插入信息错误！");
+			e.printStackTrace();
 		}
 		return re;
 	}
 
+	// 删除出版社信息
 	public int delete(Press entity) {
 		int re=0;
 		String sql = "delete from press where id=?"; // 使用SQL语句查询数据库
@@ -78,11 +84,13 @@ public class GetPress implements PressInterface {
 					System.out.println("此ID不存在，请重新输入需要删除的信息");
 				}
 			} catch (SQLException e) {
-				System.out.println("数据库删除失败，请检查原因！");
+				// System.out.println("数据库删除失败，请检查原因！");
+				e.printStackTrace();
 			} 
 		return re;
 	}
 
+	// 修改出版社信息
 	public int update(Press entity) {
 		int re=0;
 		String sql = "update press set name = ?,adress = ?, url = ?, mail = ? where id = ? "; // 使用SQL语句查询数据库
@@ -93,6 +101,7 @@ public class GetPress implements PressInterface {
 			}
 			else{
 				ps = conn.prepareStatement(sql); // 跟mysql建立连接
+				// index = 占位符位置，x = 具体数据
 				ps.setString(1, entity.getName());
 				ps.setString(2, entity.getAdress());
 				ps.setString(3, entity.getUrl());
@@ -102,7 +111,7 @@ public class GetPress implements PressInterface {
 
 			}
 		} catch (SQLException e) {
-			System.out.println("数据库插入信息错误！");
+			e.printStackTrace();
 		}
 		return re;	
 	}
