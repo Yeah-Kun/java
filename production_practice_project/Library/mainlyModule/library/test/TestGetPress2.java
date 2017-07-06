@@ -1,6 +1,6 @@
 /*
  * 2017年7月6日9:33:22
- * 测试，往Press表里面增加数据
+ * 测试，往Press表进行增删查改
  */
 package library.test;
 

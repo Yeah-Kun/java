@@ -1,15 +1,15 @@
 /*
  * 2017年7月4日15:18:21
- * 测试press的输出
+ * 测试press表的增删查改
  */
 package library.test;
+
+import library.model.Press;
+import library.server.PressServer;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import library.model.Press;
-import library.server.PressServer;
 
 public class TestGetPress {
 	// public static void main(String[] args) {
@@ -43,8 +43,9 @@ public class TestGetPress {
 	}
 	
 	@Test
+	//测试delete
 	public void testdelete() {
-		int id =5;
+		int id =2;
 		boolean re = false;
 		Press press = new Press();
 		press.setId(id);
