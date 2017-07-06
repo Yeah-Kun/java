@@ -7,12 +7,27 @@ package library.server;
 import library.dao.GetPress;
 import library.model.Press;
 
-public class PressServer implements PressInterfaceServer{
+public class PressServer implements PressInterfaceServer {
 	GetPress gp = new GetPress(); // 建立持久层的press对象，用于服务层读取信息
 
 	@Override
 	public Press FindbyID(int id) {
 		return gp.FindbyID(id);
 	}
-	
+
+	@Override
+	public boolean insert(Press entity) {
+		return gp.insert(entity) > 0 ? true : false; // 运用3目运算符，将
+	}
+
+	@Override
+	public boolean delete(Press entity) {
+		return gp.delete(entity) > 0 ? true : false;
+	}
+
+	@Override
+	public boolean update(Press entity) {
+		return gp.update(entity) > 0 ? true : false;
+	}
+
 }

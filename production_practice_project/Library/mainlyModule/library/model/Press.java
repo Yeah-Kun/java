@@ -6,10 +6,10 @@ package library.model;
 
 public class Press {
 	private int id; // 出版社ID
-	private String name; // 出版社名称
-	private String adress; // 出版社地址
-	private String url; // 出版社网址
-	private String mail; // 出版社邮箱
+	private String name = null; // 出版社名称
+	private String adress = null; // 出版社地址
+	private String url = null; // 出版社网址
+	private String mail = null; // 出版社邮箱
 
 	public int getId() {
 		return id;

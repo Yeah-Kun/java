@@ -48,4 +48,63 @@ public class GetPress implements PressInterface {
 		return press;
 	}
 
+	@Override
+	public int insert(Press eneity) {
+		int re=0;
+		String sql = "INSERT INTO Press(name,adress,url,mail) VALUES(?,?,?,?)"; // 使用SQL语句查询数据库
+		try {
+			// 访问数据库，增加一条完整的信息
+			ps = conn.prepareStatement(sql); // 跟mysql建立连接
+			ps.setString(1, eneity.getName());
+			ps.setString(2, eneity.getAdress());
+			ps.setString(3, eneity.getUrl());
+			ps.setString(4, eneity.getMail());
+			re = ps.executeUpdate(); // 将结果返回
+
+		} catch (SQLException e) {
+			System.out.println("数据库插入信息错误！");
+		}
+		return re;
+	}
+
+	public int delete(Press entity) {
+		int re=0;
+		String sql = "delete from press where id=?"; // 使用SQL语句查询数据库
+			try {
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, entity.getId()); // 预处理
+				re = ps.executeUpdate(); // 执行删除语句，返回结果
+				if(re == 0){
+					System.out.println("此ID不存在，请重新输入需要删除的信息");
+				}
+			} catch (SQLException e) {
+				System.out.println("数据库删除失败，请检查原因！");
+			} 
+		return re;
+	}
+
+	public int update(Press entity) {
+		int re=0;
+		String sql = "update press set name = ?,adress = ?, url = ?, mail = ? where id = ? "; // 使用SQL语句查询数据库
+		try {
+			// 访问数据库，增加一条完整的信息
+			if(entity == null){
+				System.out.println("该ID信息不存在！");
+			}
+			else{
+				ps = conn.prepareStatement(sql); // 跟mysql建立连接
+				ps.setString(1, entity.getName());
+				ps.setString(2, entity.getAdress());
+				ps.setString(3, entity.getUrl());
+				ps.setString(4, entity.getMail());
+				ps.setInt(5, entity.getId());
+				re = ps.executeUpdate(); // 执行，并将结果返回
+
+			}
+		} catch (SQLException e) {
+			System.out.println("数据库插入信息错误！");
+		}
+		return re;	
+	}
+
 }
