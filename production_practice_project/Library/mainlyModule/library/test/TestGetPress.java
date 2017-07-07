@@ -25,12 +25,13 @@ public class TestGetPress {
 		psi = new PressServer(); // 用于测试FindbyID
 	}
 
-//	@Test
+	@Test
 	// 测试FindbyID
 	public void testFindbyID() {
 		Assert.assertNotNull(psi.FindbyID(1));
 		Assert.assertEquals("人民教育出版社", psi.FindbyID(1).getName());
 	}
+	
 //	@Test
 	// 测试insert
 	public void testinsert() {
@@ -42,16 +43,16 @@ public class TestGetPress {
 		Assert.assertTrue(psi.insert(press));
 	}
 	
-	@Test
-	//测试delete
-	public void testdelete() {
-		int id =3;
-		boolean re = false;
-		Press press = new Press();
-		press.setId(id);
-		re = psi.delete(press);
-		Assert.assertTrue(re);
-	}
+//	@Test
+//	//测试delete
+//	public void testdelete() {
+//		int id =3;
+//		boolean re = false;
+//		Press press = new Press();
+//		press.setId(id);
+//		re = psi.delete(press);
+//		Assert.assertTrue(re);
+//	}
 	
 	//@Test
 	//测试update
