@@ -1,15 +1,14 @@
-/**
- * 2017年7月8日15:48:30
- * 老师的代码
- */
 package library.view;
+
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,13 +24,46 @@ import javax.swing.table.AbstractTableModel;
 import library.model.Press;
 import library.server.PressServer;
 
-public class FrmPressManage extends JFrame {
-	FrmPressAdd fpa = null;
+public class FrmPressManage1 extends JFrame implements MouseListener {
 
-	public FrmPressManage() {
+	
+	// 定义添加界面
+	FrmPressAdd fpa = null;
+	PressServer psi = new PressServer();
+	JTable table;
+
+	public void mouseClicked(MouseEvent e) {
+		int row = table.getSelectedRow();
+		int col = table.getSelectedColumn();
+		Object value = table.getValueAt(row, col);
+		JOptionPane.showMessageDialog(null, value);
+	}
+
+	public void mousePressed(MouseEvent e) {
+		// TODO 自动生成的方法存根
+
+	}
+
+	public void mouseReleased(MouseEvent e) {
+		// TODO 自动生成的方法存根
+
+	}
+
+	public void mouseEntered(MouseEvent e) {
+		// TODO 自动生成的方法存根
+
+	}
+
+	public void mouseExited(MouseEvent e) {
+		// TODO 自动生成的方法存根
+
+	}
+
+	public void FrmPressManage() {
+		// 添加页面实例化
 		fpa = new FrmPressAdd();
+
 		JButton buttonadd, buttonclose;
-		
 		// 添加删除面板
 		final JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(SystemColor.activeCaptionBorder, 1,
@@ -55,7 +87,9 @@ public class FrmPressManage extends JFrame {
 		// 内部类，表模型
 		TableModel btm = new TableModel();
 		// 生成表控件　
-		JTable table = new JTable(btm);
+		table = new JTable(btm);
+		// 在表上添加鼠标监听
+		table.addMouseListener(this);
 		table.setFillsViewportHeight(true);
 		table.setAutoResizeMode(WIDTH);
 		// 用表控件构建滚动面板
@@ -75,7 +109,7 @@ public class FrmPressManage extends JFrame {
 	}
 
 	class TableModel extends AbstractTableModel {
-		private List<Press> data = new PressServer().FindAll();
+		private ArrayList<Press> data = new PressServer().FindAll();
 
 		@Override
 		public int getRowCount() {
@@ -121,7 +155,7 @@ public class FrmPressManage extends JFrame {
 		}
 
 
-		public void setData(List<Press> data) {
+		public void setData(ArrayList<Press> data) {
 			if (data == null)
 				throw new IllegalArgumentException("参数data不能为null。");
 
@@ -140,30 +174,32 @@ public class FrmPressManage extends JFrame {
 
 	// add frame begin
 	class FrmPressAdd extends JFrame {
+		JTextField jTName, jTAddress, jTUrl, jTMail;
+
 		public FrmPressAdd() {
 			JPanel mainPanel = new JPanel();
 			// 名称　面板　　
 			JPanel jpName = new JPanel();
 			JLabel jlName = new JLabel("出版社名称：");
-			JTextField jTName = new JTextField(20);
+			jTName = new JTextField(20);
 			jpName.add(jlName);
 			jpName.add(jTName);
 			// 地址面板
 			JPanel jpAddress = new JPanel();
 			JLabel jlAddress = new JLabel("出版社地址：");
-			JTextField jTAddress = new JTextField(20);
+			jTAddress = new JTextField(20);
 			jpAddress.add(jlAddress);
 			jpAddress.add(jTAddress);
 			// 地址面板
 			JPanel jpUrl = new JPanel();
 			JLabel jlUrl = new JLabel("出版社网址：");
-			JTextField jTUrl = new JTextField(20);
+			jTUrl = new JTextField(20);
 			jpUrl.add(jlUrl);
 			jpUrl.add(jTUrl);
 			// 地址面板
 			JPanel jpMail = new JPanel();
 			JLabel jlMail = new JLabel("出版社邮箱：");
-			JTextField jTMail = new JTextField(20);
+			jTMail = new JTextField(20);
 			jpMail.add(jlMail);
 			jpMail.add(jTMail);
 
@@ -173,16 +209,26 @@ public class FrmPressManage extends JFrame {
 			mainPanel.add(jpUrl);
 			mainPanel.add(jpMail);
 			JButton btnSave = new JButton("提交");
+			// 提交按钮添加事件监听，内部类完成监听的功能
 			btnSave.addActionListener(new ActionListener() {
-
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					JOptionPane.showMessageDialog(null, "添加成功！");
-
+					// 生成对象
+					Press p = new Press();
+					// 填充对象
+					p.setName(jTName.getText());
+					p.setAdress(jTAddress.getText());
+					p.setMail(jTMail.getText());
+					p.setUrl(jTUrl.getText());
+					// 添加对象，根据返回值给出提示
+					if (psi.insert(p)) {
+						JOptionPane.showMessageDialog(null, "添加成功！");
+					} else {
+						JOptionPane.showMessageDialog(null, "添加失败！");
+					}
 				}
 			});
 			mainPanel.add(btnSave);
-
 			this.getContentPane().add(mainPanel);
 			this.setSize(400, 200);
 		}
