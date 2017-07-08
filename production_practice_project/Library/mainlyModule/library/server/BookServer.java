@@ -32,19 +32,19 @@ public class BookServer implements BookServerInterface{
 	@Override
 	public boolean insert(Book entity) {
 		// TODO 自动生成的方法存根
-		return false;
+		return gb.insert(entity) > 0 ? true : false;
 	}
 
 	@Override
 	public boolean delete(Book entity) {
 		// TODO 自动生成的方法存根
-		return false;
+		return gb.delete(entity) > 0 ? true : false;
 	}
 
 	@Override
 	public boolean update(Book entity) {
 		// TODO 自动生成的方法存根
-		return false;
+		return gb.update(entity) > 0 ? true : false;
 	}
 	
 }

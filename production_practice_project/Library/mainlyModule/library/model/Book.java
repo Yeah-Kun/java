@@ -27,7 +27,7 @@ public class Book {
 		return ISBN;
 	}
 	public void setISBN(String iSBN) {
-		ISBN = iSBN;
+		this.ISBN = iSBN;
 	}
 	public double getPrice() {
 		return price;

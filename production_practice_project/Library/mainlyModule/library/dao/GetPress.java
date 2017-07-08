@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import library.model.Press;
 
@@ -22,6 +23,40 @@ public class GetPress implements PressInterface {
 	Connection conn = ConnectMySQL.getConnect();// 创建Connection对象
 	ResultSet result = null; // 用来保存数据库的二维表信息
 	PreparedStatement ps = null; // PreparedStatement对象，用于存储Connection对象返回的内容
+
+	
+	// 返回所有数据
+	public ArrayList<Press> FindAll() {
+		ArrayList<Press> presslist = new ArrayList<>();
+		
+		Press press = null;
+		String sql = "select * from press"; // 使用sql语句查询数据库
+		try {
+			// 访问数据库 通过ID，获取一条数据
+			ps = conn.prepareStatement(sql); 
+			
+			result = ps.executeQuery(); // 得到数据库信息，并保存到result
+			
+			// 执行以下语句，说明id存在
+			// 将result的信息存储到press对象里面
+			while (result.next()) {
+				press = new Press();
+
+				// 将result的二维表内容放到press对象里面
+				press.setId(result.getInt("id")); // 从result中获取id
+				press.setAdress(result.getString("adress"));
+				press.setMail(result.getString("mail"));
+				press.setName(result.getString("name"));
+				press.setUrl(result.getString("url"));
+				presslist.add(press);
+			}
+		} catch (SQLException e) {
+			//System.out.println("数据库提取信息错误！");
+			e.printStackTrace();
+		}
+
+		return presslist; // 如果获取失败则为null
+	}
 
 	// 通过ID查找出版社信息
 	public Press FindbyID(int id) {

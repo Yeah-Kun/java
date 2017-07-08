@@ -4,11 +4,19 @@
  */
 package library.server;
 
+import java.util.ArrayList;
+
 import library.dao.GetPress;
 import library.model.Press;
 
 public class PressServer implements PressServerInterface {
 	GetPress gp = new GetPress(); // 建立持久层的press对象，用于服务层读取信息
+
+	
+	@Override
+	public ArrayList<Press> FindAll() {
+		return gp.FindAll();
+	}
 
 	@Override
 	public Press FindbyID(int id) {

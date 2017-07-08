@@ -4,9 +4,12 @@
  */
 package library.server;
 
+import java.util.ArrayList;
+
 import library.model.Press;
 
 public interface PressServerInterface {
+	public ArrayList<Press> FindAll();
 	public Press FindbyID(int id); 
 	public boolean insert(Press entity);
 	public boolean delete(Press entity);

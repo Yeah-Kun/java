@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import library.model.Book;
-import library.model.Press;
 
 public class GetBook implements BookInterface{
 	
@@ -83,14 +82,15 @@ public class GetBook implements BookInterface{
 	@Override
 	public int insert(Book entity) {
 		int re=0;
-		String sql = "INSERT INTO Press(name,ISBN,price,pressID,categoryID) VALUES(?,?,?,?,?)"; // 使用SQL语句查询数据库
+		String sql = "INSERT INTO book(name,ISBN,price,pressID,categoryID) VALUES(?,?,?,?,?)"; // 使用SQL语句查询数据库
 		try {
 			// 访问数据库，增加一条完整的信息
 			ps = conn.prepareStatement(sql); // 跟mysql建立连接
 			ps.setString(1, entity.getName());
 			ps.setString(2, entity.getISBN());
 			ps.setDouble(3, entity.getPrice());
-			ps.setString(4, entity.getPress());
+			ps.setInt(4, entity.getPress().getId());
+			ps.setInt(5, entity.getCategory().getId());
 			re = ps.executeUpdate(); // 执行，将结果返回
 
 		} catch (SQLException e) {
@@ -101,15 +101,48 @@ public class GetBook implements BookInterface{
 	}
 
 	@Override
-	public int delete(Book enity) {
-		// TODO 自动生成的方法存根
-		return 0;
+	public int delete(Book entity) {
+		int re=0;
+		String sql = "delete from book where id=?"; // 使用SQL语句查询数据库
+			try {
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, entity.getId()); // 预处理
+				re = ps.executeUpdate(); // 执行删除语句，返回结果
+				if(re == 0){
+					System.out.println("此ID不存在，请重新输入需要删除的信息");
+				}
+			} catch (SQLException e) {
+				// System.out.println("数据库删除失败，请检查原因！");
+				e.printStackTrace();
+			} 
+		return re;
 	}
 
 	@Override
 	public int update(Book entity) {
-		// TODO 自动生成的方法存根
-		return 0;
+		int re=0;
+		String sql = "update book set name = ?,ISBN = ?, price = ?, pressID = ? , CategoryID = ? where id = ? "; // 使用SQL语句查询数据库
+		try {
+			// 访问数据库，增加一条完整的信息
+			if(entity == null){
+				System.out.println("该ID信息不存在！");
+			}
+			else{
+				ps = conn.prepareStatement(sql); // 跟mysql建立连接
+				// index = 占位符位置，x = 具体数据
+				ps.setString(1, entity.getName());
+				ps.setString(2, entity.getISBN());
+				ps.setDouble(3, entity.getPrice());
+				ps.setInt(4, entity.getPress().getId());
+				ps.setInt(5, entity.getCategory().getId());
+				ps.setInt(6, entity.getId());
+				re = ps.executeUpdate(); // 执行，并将结果返回
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return re;	
 	}
 	
 }
