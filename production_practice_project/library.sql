@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50718
+Source Server         : connector
+Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : library
 
 Target Server Type    : MYSQL
-Target Server Version : 50718
+Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-07-06 22:57:16
+Date: 2017-07-08 11:30:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,11 +27,12 @@ CREATE TABLE `book` (
   `pressID` int(20) DEFAULT NULL COMMENT '出版社ID',
   `categoryID` int(20) DEFAULT NULL COMMENT '图书类别ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of book
 -- ----------------------------
+INSERT INTO `book` VALUES ('1', 'JavaSE', '654348561', '23', '1', '1');
 
 -- ----------------------------
 -- Table structure for category
@@ -41,15 +42,14 @@ CREATE TABLE `category` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES ('1', '人文');
-INSERT INTO `category` VALUES ('2', '政治');
-INSERT INTO `category` VALUES ('4', '历史');
-INSERT INTO `category` VALUES ('6', '军事');
+INSERT INTO `category` VALUES ('1', '计算机');
+INSERT INTO `category` VALUES ('2', '人文');
+INSERT INTO `category` VALUES ('3', '军事');
 
 -- ----------------------------
 -- Table structure for press
@@ -71,3 +71,9 @@ INSERT INTO `press` VALUES ('1', '人民教育出版社', '北京', 'http://www.
 INSERT INTO `press` VALUES ('2', 'AKB48', '南京', 'www.jiangmen.com', '654615@qq.com');
 INSERT INTO `press` VALUES ('3', '志坚哥', '江门', 'www.zhijian.com', '5461@qq.com');
 INSERT INTO `press` VALUES ('4', 'SBH48', '广州', 'www.wyu.com', '68465@qq.com');
+
+-- ----------------------------
+-- View structure for v_book
+-- ----------------------------
+DROP VIEW IF EXISTS `v_book`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_book` AS select `b`.`id` AS `bid`,`b`.`name` AS `bname`,`b`.`ISBN` AS `ISBN`,`b`.`price` AS `price`,`c`.`name` AS `cname`,`p`.`name` AS `pname` from ((`book` `b` left join `category` `c` on((`b`.`categoryID` = `c`.`id`))) left join `press` `p` on((`p`.`id` = `b`.`pressID`))) ;

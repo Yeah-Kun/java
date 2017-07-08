@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import library.model.Book;
 import library.model.Category;
 
 public class GetCategory implements CategoryInterface{
@@ -18,6 +20,14 @@ public class GetCategory implements CategoryInterface{
 	ResultSet result = null; // 用来保存数据库的二维表信息
 	PreparedStatement ps = null; // PreparedStatement对象，用于存储Connection对象返回的内容
 	
+	
+	@Override
+	public ArrayList<Book> FindAll() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+
 	// 通过ID查找类名
 	public Category FindbyID(int id) {
 		Category cat= null; // 因为不知道id存不存在，所以不new

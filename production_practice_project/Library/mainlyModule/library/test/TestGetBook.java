@@ -1,6 +1,6 @@
 
 package library.test;
 
-public class TestBook {
+public class TestGetBook {
 
 }

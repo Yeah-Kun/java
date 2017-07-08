@@ -9,62 +9,51 @@ public class Book {
 	private String name; // 图书名称
 	private String ISBN; // 图书编码
 	private double price; // 图书价格
-	private int pressID; // 出版社ID
-	private int categoryID; // 分类ID
-
+	private Press press; // 出版社ID
+	private Category category; // 分类ID
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getISBN() {
 		return ISBN;
 	}
-
 	public void setISBN(String iSBN) {
 		ISBN = iSBN;
 	}
-
 	public double getPrice() {
 		return price;
 	}
-
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-	public int getPressID() {
-		return pressID;
+	public Press getPress() {
+		return press;
 	}
-
-	public void setPressID(int pressID) {
-		this.pressID = pressID;
+	public void setPress(Press press) {
+		this.press = press;
 	}
-
-	public int getCategoryID() {
-		return categoryID;
+	public Category getCategory() {
+		return category;
 	}
-
-	public void setCategoryID(int categoryID) {
-		this.categoryID = categoryID;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", name=" + name + ", ISBN=" + ISBN
-				+ ", price=" + price + ", pressID=" + pressID + ", categoryID="
-				+ categoryID + "]";
+				+ ", price=" + price + ", press=" + press + ", category="
+				+ category + "]";
 	}
 
 	
