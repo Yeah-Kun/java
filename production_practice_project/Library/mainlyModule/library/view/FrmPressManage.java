@@ -43,15 +43,17 @@ public class FrmPressManage extends JFrame {
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		panel_1.setLayout(flowLayout);
 
+		// 增加按钮
 		buttonadd = new JButton();
 		buttonadd.addActionListener(new addBookActionListener());
 		buttonadd.setText("添加");
 		panel_1.add(buttonadd);
-
+		// 关闭按钮
 		buttonclose = new JButton();
 		// buttonclose.addActionListener(new CloseActionListener());
 		buttonclose.setText("关闭");
 		panel_1.add(buttonclose);
+		
 		// 内部类，表模型
 		TableModel btm = new TableModel();
 		// 生成表控件　
@@ -104,6 +106,7 @@ public class FrmPressManage extends JFrame {
 			return null;
 		}
 
+		// 给单元格填充信息
 		@Override
 		public Object getValueAt(int rowIndex, int columnIndex) {
 			Press entity = data.get(rowIndex);
@@ -127,6 +130,7 @@ public class FrmPressManage extends JFrame {
 
 			this.data = data;
 
+			
 			fireTableDataChanged();
 		}
 

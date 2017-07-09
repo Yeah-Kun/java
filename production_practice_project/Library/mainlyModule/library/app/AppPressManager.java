@@ -1,9 +1,9 @@
 package library.app;
 
-import library.view.FrmPressManage;
+import library.view.FrmPressManage1;
 
 public class AppPressManager {
 	public static void main(String[] args) {
-		FrmPressManage fpm = new FrmPressManage();
+		FrmPressManage1 fpm = new FrmPressManage1();
 	}
 }
