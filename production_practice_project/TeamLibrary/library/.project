@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Book1</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src/com/library/dao/BUtil.class</name>
+			<type>1</type>
+			<location>D:/Book1/bin/com/library/dao/BUtil.class</location>
+		</link>
+		<link>
+			<name>src/com/library/dao/BookDaoImpl.class</name>
+			<type>1</type>
+			<location>D:/Book1/bin/com/library/dao/BookDaoImpl.class</location>
+		</link>
+		<link>
+			<name>src/com/library/dao/IBookDao.class</name>
+			<type>1</type>
+			<location>D:/Book1/bin/com/library/dao/IBookDao.class</location>
+		</link>
+		<link>
+			<name>src/com/library/dao/IReaderDao.class</name>
+			<type>1</type>
+			<location>D:/Book1/bin/com/library/dao/IReaderDao.class</location>
+		</link>
+		<link>
+			<name>src/com/library/dao/ReaderDaoImpl.class</name>
+			<type>1</type>
+			<location>D:/Book1/bin/com/library/dao/ReaderDaoImpl.class</location>
+		</link>
+	</linkedResources>
+</projectDescription>
