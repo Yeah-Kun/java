@@ -25,7 +25,7 @@ public class TestFrmPressDetail {
 	
 	@Test
 	public void testFindbyID(){
-		Fpd.setContent(psi.FindbyID(1).toString()); // 服务层获取信息，视窗层展示
-		Assert.assertNotNull(Fpd);
+		
+		Assert.assertNotNull(psi);
 	}
 }

@@ -1,7 +1,6 @@
-/**
+/*
  * 2017年7月4日9:19:46
- * Drivermanager->Connection
- * Java连接mysql
+ * Drivermanager
  * 1. 配置mysql的驱动器
  * 2. 连接mysql
  */
@@ -19,7 +18,7 @@ public class ConnectMySQL {
 		Connection flag = null;
 		try {
 			// 1. 配置mysql的驱动器
-			Class.forName("com.mysql.jdbc.Driver"); 
+			Class.forName("com.mysql.jdbc.Driver");
 			// 2. 连接mysql
 			String url = "jdbc:mysql://localhost:3306/library";
 			String user = "root";
